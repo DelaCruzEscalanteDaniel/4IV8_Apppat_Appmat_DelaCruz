@@ -25,7 +25,7 @@ nav, section, footer, aside, article{
 
 article, aside{
     width: 40%;
-    display: inline-;
+    display: inline-flex;
     height: 300px;
 }
 
