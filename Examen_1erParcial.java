@@ -42,8 +42,8 @@ import java.util.Scanner;
                     System.out.println("¿Desea ver sus datos? 1. Sí / 2. No");
                     int s = sc.nextInt();
                     if (s == 1) {
-                        System.out.println("Hola " + nombre + " " + apellidop + " " + apellidom);
-                        System.out.println("Fecha: " + dia + "/" + mes + "/" + año);
+                        System.out.println("Hola de nuevo " + nombre + " " + apellidop + " " + apellidom);
+                        System.out.println("Recordaremos esta fecha: " + dia + "/" + mes + "/" + año);
                     } 
                     break;
 
@@ -57,15 +57,22 @@ import java.util.Scanner;
                     break;
 
                 case 4: 
-                    System.out.print("Largo del prisma: ");
+                    System.out.print("Ingrese el largo del prisma: ");
                     double l = sc.nextDouble();
-                    System.out.print("Ancho: ");
+                    System.out.print("Ingrese el ancho del prisma: ");
                     double a = sc.nextDouble();
-                    System.out.print("Altura: ");
+                    System.out.print("Ingrese la altura del prisma: ");
                     double h = sc.nextDouble();
+                    System.out.println("Ingrese la altura de su pirámide: ");
+                    int ht = sc.nextInt();
+                    System.out.println("Ingrese el Área de la base de su pirámide: ");
+                    int At = sc.nextInt();
 
                     double volumenPrisma = l * a * h;
+                    double VolumenP = At * ht;
+                    double VolumenPiramide = VolumenP/3;
                     System.out.println("El volumen del prisma es: " + volumenPrisma);
+                    System.out.println("El volumen de la pirámide es: " + VolumenPiramide);
                     break;
 
                 default:
