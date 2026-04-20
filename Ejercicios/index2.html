@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 2 - Comisiones</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Ejercicio 2: Sueldo + Comisiones</h1>
+    <p>10% de comisión sobre las ventas</p>
+
+    <label for="sueldo">Sueldo base ($):</label>
+    <input type="number" id="sueldo" placeholder="Ej: 5000">
+
+    <label for="v1">Venta 1 ($):</label>
+    <input type="number" id="v1" placeholder="Ej: 1200">
+
+    <label for="v2">Venta 2 ($):</label>
+    <input type="number" id="v2" placeholder="Ej: 2500">
+
+    <label for="v3">Venta 3 ($):</label>
+    <input type="number" id="v3" placeholder="Ej: 1800">
+
+    <div id="error" class="error"></div>
+    <button onclick="calcularComisiones()">Calcular Total</button>
+    
+    <div id="result" class="result"></div>
+  </div>
+
+  <script src="script2.js"></script>
+</body>
+</html>

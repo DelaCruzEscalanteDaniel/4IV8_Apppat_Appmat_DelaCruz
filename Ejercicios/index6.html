@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 6 - Edad</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Ejercicio 6: Calcular Edad</h1>
+
+    <label for="anio">Año de nacimiento:</label>
+    <input type="number" id="anio" placeholder="Ej: 1995" min="1900" max="2026">
+    <div id="error" class="error"></div>
+    
+    <button onclick="calcularEdad()">Calcular Edad</button>
+    
+    <div id="result" class="result"></div>
+  </div>
+
+  <script src="script6.js"></script>
+</body>
+</html>
