@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador de Películas</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Administrador de Películas</h1>
+        <p>Sistema de gestión de películas, géneros, reseñas y directores</p>
+
+        <nav class="tabs">
+            <button class="tab active" onclick="cambiarSeccion('movies')">Películas</button>
+            <button class="tab" onclick="cambiarSeccion('genres')">Géneros</button>
+            <button class="tab" onclick="cambiarSeccion('reviews')">Reseñas</button>
+            <button class="tab" onclick="cambiarSeccion('directors')">Directores</button>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="info-api">
+            <h3>Estado de la API</h3>
+            <div class="api-status">
+                <span id="api-metodo" class="badge">-</span>
+                <span id="api-url" class="api-url">-</span>
+                <span id="api-codigo" class="badge badge-neutral">-</span>
+            </div>
+        </section>
+
+        <!-- PELICULAS -->
+        <div id="seccion-movies" class="seccion">
+
+            <section class="formulario-section">
+                <h2 id="form-titulo-movie">Agregar Película</h2>
+
+                <form id="form-movie">
+
+                    <input type="hidden" id="movie-id">
+
+                    <div class="campos-grid">
+
+                        <div class="campo">
+                            <label>Título</label>
+                            <input type="text" id="movie-title" required>
+                        </div>
+
+                        <div class="campo">
+                            <label>Director</label>
+                            <select id="movie-director" required>
+                                <option value="">Seleccionar director</option>
+                            </select>
+                        </div>
+
+                        <div class="campo">
+                            <label>Año</label>
+                            <input type="number" id="movie-year" required>
+                        </div>
+
+                        <div class="campo">
+                            <label>Duración (min)</label>
+                            <input type="number" id="movie-duration" required>
+                        </div>
+
+                        <div class="campo" style="grid-column: span 2;">
+                            <label>Sinopsis</label>
+                            <textarea id="movie-synopsis" rows="4"></textarea>
+                        </div>
+
+                    </div>
+
+                    <div class="botones">
+                        <button type="submit" id="btn-guardar-movie">Guardar</button>
+                        <button type="button" id="btn-cancelar-movie" class="btn-secundario" style="display:none;">
+                            Cancelar
+                        </button>
+                    </div>
+
+                </form>
+            </section>
+
+            <section class="tabla-section">
+
+                <h2>
+                    Películas
+                    <span id="contador-movies" class="badge badge-neutral"></span>
+                </h2>
+
+                <p id="carga-movies">Cargando...</p>
+
+                <table id="tabla-movies" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Título</th>
+                            <th>Director</th>
+                            <th>Año</th>
+                            <th>Duración</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tbody-movies"></tbody>
+                </table>
+
+            </section>
+
+        </div>
+
+        <!-- GENEROS -->
+        <div id="seccion-genres" class="seccion" style="display:none;">
+
+            <section class="formulario-section">
+
+                <h2 id="form-titulo-genre">Agregar Género</h2>
+
+                <form id="form-genre">
+
+                    <input type="hidden" id="genre-id">
+
+                    <div class="campos-grid">
+
+                        <div class="campo">
+                            <label>Nombre</label>
+                            <input type="text" id="genre-name" required>
+                        </div>
+
+                        <div class="campo">
+                            <label>Descripción</label>
+                            <input type="text" id="genre-description" required>
+                        </div>
+
+                    </div>
+
+                    <div class="botones">
+                        <button type="submit" id="btn-guardar-genre">Guardar</button>
+                        <button type="button" id="btn-cancelar-genre" class="btn-secundario" style="display:none;">
+                            Cancelar
+                        </button>
+                    </div>
+
+                </form>
+
+            </section>
+
+            <section class="tabla-section">
+
+                <h2>
+                    Géneros
+                    <span id="contador-genres" class="badge badge-neutral"></span>
+                </h2>
+
+                <p id="carga-genres">Cargando...</p>
+
+                <table id="tabla-genres" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tbody-genres"></tbody>
+                </table>
+
+            </section>
+
+        </div>
+
+        <!-- RESEÑAS -->
+        <div id="seccion-reviews" class="seccion" style="display:none;">
+
+            <section class="formulario-section">
+
+                <h2>Registrar Reseña</h2>
+
+                <form id="form-review">
+
+                    <div class="campos-grid">
+
+                        <div class="campo">
+                            <label>Película</label>
+                            <select id="review-movie" required>
+                                <option value="">Seleccionar película</option>
+                            </select>
+                        </div>
+
+                        <div class="campo">
+                            <label>Género</label>
+                            <select id="review-genre" required>
+                                <option value="">Seleccionar género</option>
+                            </select>
+                        </div>
+
+                        <div class="campo">
+                            <label>Calificación (1-10)</label>
+                            <input type="number"
+                                   id="review-rating"
+                                   min="1"
+                                   max="10"
+                                   required>
+                        </div>
+
+                        <div class="campo" style="grid-column: span 2;">
+                            <label>Comentario</label>
+                            <textarea id="review-comment" rows="4"></textarea>
+                        </div>
+
+                    </div>
+
+                    <div class="botones">
+                        <button type="submit">
+                            Registrar Reseña
+                        </button>
+                    </div>
+
+                </form>
+
+            </section>
+
+            <section class="tabla-section">
+
+                <h2>
+                    Reseñas
+                    <span id="contador-reviews" class="badge badge-neutral"></span>
+                </h2>
+
+                <p id="carga-reviews">Cargando...</p>
+
+                <table id="tabla-reviews" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Película</th>
+                            <th>Género</th>
+                            <th>Calificación</th>
+                            <th>Comentario</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tbody-reviews"></tbody>
+                </table>
+
+            </section>
+
+        </div>
+
+        <!-- DIRECTORES -->
+        <div id="seccion-directors" class="seccion" style="display:none;">
+
+            <section class="formulario-section">
+
+                <h2 id="form-titulo-director">Agregar Director</h2>
+
+                <form id="form-director">
+
+                    <input type="hidden" id="director-id">
+
+                    <div class="campos-grid">
+
+                        <div class="campo">
+                            <label>Nombre</label>
+                            <input type="text" id="director-name" required>
+                        </div>
+
+                        <div class="campo">
+                            <label>Fecha de nacimiento</label>
+                            <input type="date" id="director-birth">
+                        </div>
+
+                    </div>
+
+                    <div class="botones">
+                        <button type="submit" id="btn-guardar-director">
+                            Guardar
+                        </button>
+
+                        <button type="button"
+                                id="btn-cancelar-director"
+                                class="btn-secundario"
+                                style="display:none;">
+                            Cancelar
+                        </button>
+                    </div>
+
+                </form>
+
+            </section>
+
+            <section class="tabla-section">
+
+                <h2>
+                    Directores
+                    <span id="contador-directors" class="badge badge-neutral"></span>
+                </h2>
+
+                <p id="carga-directors">Cargando...</p>
+
+                <table id="tabla-directors" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Fecha de nacimiento</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tbody-directors"></tbody>
+                </table>
+
+            </section>
+
+        </div>
+
+        <div id="notificacion"
+             class="notificacion"
+             style="display:none;">
+        </div>
+
+    </main>
+
+    <footer>
+        <p>
+            Movie Manager — API:
+            Películas / Géneros / Reseñas / Directores
+        </p>
+    </footer>
+
+    <script src="./js/app.js"></script>
+
+</body>
+</html>
