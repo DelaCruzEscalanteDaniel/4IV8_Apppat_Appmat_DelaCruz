@@ -1,0 +1,120 @@
+:root {
+    --naranja: #FF6B00;
+    --gris-oscuro: #1E1E1E;
+    --negro: #121212;
+    --blanco: #F8F8F8;
+    --gris-claro: #333333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--negro);
+    color: var(--blanco);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--gris-oscuro);
+    border-radius: 16px;
+    padding: 40px 50px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    border: 1px solid #333;
+}
+
+h1 {
+    color: var(--naranja);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+}
+
+p {
+    color: #CCCCCC;
+    margin-bottom: 25px;
+    text-align: justify;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+label {
+    color: var(--blanco);
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"] {
+    width: 100%;
+    padding: 14px 16px;
+    background-color: var(--gris-claro);
+    border: 2px solid #444;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus {
+    border-color: var(--naranja);
+    background-color: #2A2A2A;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.2);
+}
+
+input::placeholder {
+    color: #888;
+}
+
+input[type="submit"],
+input[type="reset"] {
+    padding: 14px 24px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+input[type="submit"] {
+    background-color: var(--naranja);
+    color: white;
+}
+
+input[type="submit"]:hover {
+    background-color: #FF8533;
+    transform: translateY(-2px);
+}
+
+input[type="reset"] {
+    background-color: #444;
+    color: white;
+}
+
+input[type="reset"]:hover {
+    background-color: #555;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 30px 25px;
+    }
+}
