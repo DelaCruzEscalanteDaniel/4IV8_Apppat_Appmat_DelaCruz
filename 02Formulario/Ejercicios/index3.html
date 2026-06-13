@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 3 - Descuento</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Ejercicio 3: Descuento en Tienda</h1>
+    <p>15% de descuento sobre el total</p>
+
+    <label for="compra">Total de la compra ($):</label>
+    <input type="number" id="compra" placeholder="Ej: 850" min="1">
+    <div id="error" class="error"></div>
+    
+    <button onclick="calcularDescuento()">Calcular Precio Final</button>
+    
+    <div id="result" class="result"></div>
+  </div>
+
+  <script src="script3.js"></script>
+</body>
+</html>
