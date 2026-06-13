@@ -5,6 +5,205 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejemplo de CRUD</title>
     <link rel="stylesheet" href="/07CRUD/public/style.css">
+    <style>
+        :root {
+    --color-naranja: #ff6b00;
+    --color-naranja-hover: #e05e00;
+    --color-gris-oscuro: #2b2b2b;
+    --color-gris-medio: #404040;
+    --color-gris-claro: #f4f4f4;
+    --color-blanco: #ffffff;
+    --color-negro: #111111;
+    --color-error: #ff4d4d;
+    --fuente-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--fuente-principal);
+    background-color: var(--color-negro);
+    color: var(--color-blanco);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--color-naranja);
+}
+
+header h1 {
+    color: var(--color-blanco);
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+@media (min-width: 768px) {
+    main {
+        grid-template-columns: 1fr 2fr;
+    }
+}
+
+section {
+    background-color: var(--color-gris-oscuro);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+section h2 {
+    color: var(--color-naranja);
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    border-bottom: 1px solid var(--color-gris-medio);
+    padding-bottom: 10px;
+}
+
+.campo {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--color-blanco);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px 12px;
+    background-color: var(--color-gris-medio);
+    border: 2px solid transparent;
+    border-radius: 4px;
+    color: var(--color-blanco);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--color-naranja);
+    background-color: #4a4a4a;
+}
+
+.error {
+    color: var(--color-error);
+    font-size: 0.8rem;
+    display: block;
+    margin-top: 4px;
+}
+
+button {
+    cursor: pointer;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#btn-guardar {
+    background-color: var(--color-naranja);
+    color: var(--color-blanco);
+}
+
+#btn-guardar:hover {
+    background-color: var(--color-naranja-hover);
+}
+
+#btn-cancelar {
+    background-color: transparent;
+    color: var(--color-blanco);
+    border: 2px solid var(--color-gris-medio);
+}
+
+#btn-cancelar:hover {
+    background-color: var(--color-gris-medio);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+#mensaje-carga, #mensaje-vacio {
+    text-align: center;
+    padding: 20px;
+    color: var(--color-gris-claro);
+    font-style: italic;
+}
+
+.table-section {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color: var(--color-gris-medio);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+thead {
+    background-color: var(--color-negro);
+    border-bottom: 2px solid var(--color-naranja);
+}
+
+th {
+    color: var(--color-naranja);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+tbody tr {
+    border-bottom: 1px solid var(--color-gris-oscuro);
+    transition: background-color 0.2s ease;
+}
+
+tbody tr:hover {
+    background-color: rgba(255, 107, 0, 0.08);
+}
+
+tbody td button {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    display: inline-block;
+    width: auto;
+    margin-right: 5px;
+    margin-bottom: 0;
+}
+    </style>
 </head>
 <body>
     <header><h1>Ejemplo de Gestión de Usuarios</h1></header>
